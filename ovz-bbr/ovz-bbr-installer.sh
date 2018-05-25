@@ -1,7 +1,7 @@
 #!/bin/sh
 
 : <<-'EOF'
-Copyright 2017 Xingwang Liao <kuoruan@gmail.com>
+Copyright 2017 Xingwang Liao <Ache1123@gmail.com>
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -20,7 +20,7 @@ SERVICE_NAME='haproxy-lkl'
 # Haproxy-lkl 默认安装路径，修改之后需要同时修改服务启动文件
 HAPROXY_LKL_DIR="/usr/local/$SERVICE_NAME"
 
-BASE_URL='https://github.com/kuoruan/shell-scripts/raw/master/ovz-bbr'
+BASE_URL='https://github.com/Ache1123/shell-scripts/raw/master/ovz-bbr'
 HAPROXY_BIN_URL="${BASE_URL}/bin/haproxy.linux2628_x86_64"
 HAPROXY_LKL_BIN_URL="${BASE_URL}/bin/haproxy-lkl.sh"
 HAPROXY_LKL_SERVICE_FILE_DEBIAN_URL="${BASE_URL}/startup/haproxy-lkl.init.debain"
@@ -38,9 +38,9 @@ cat >&2 <<-'EOF'
 #######################################################
 # OpenVZ BBR 一键安装脚本                             #
 # 该脚本用于在 OpenVZ 服务器上安装配置 Google BBR     #
-# 脚本作者: Xingwang Liao <kuoruan@gmail.com>         #
-# 作者博客: https://blog.kuoruan.com/                 #
-# Github: https://github.com/kuoruan/shell-scripts    #
+# 脚本作者: Xingwang Liao <Ache1123@gmail.com>         #
+# 作者博客: https://blog.Ache1123.com/                 #
+# Github: https://github.com/Ache1123/shell-scripts    #
 # QQ交流群: 43391448, 68133628                        #
 #           633945405                                 #
 #######################################################
@@ -675,7 +675,7 @@ end_install() {
 	服务已自动加入开机启动，请放心使用。
 
 	如果这个脚本帮到了你，你可以请作者喝瓶可乐:
-	  https://blog.kuoruan.com/donate
+	  https://blog.Ache1123.com/donate
 
 	享受加速的快感吧！
 	EOF
