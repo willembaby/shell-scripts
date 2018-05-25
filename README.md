@@ -10,6 +10,37 @@ systemctl disable firewalld
 systemctl stop firewalld
 # 安装
 wget --no-check-certificate https://raw.githubusercontent.com/Ache1123/shell-scripts/master/ovz-bbr/ovz-bbr-installer.sh && chmod +x ovz-bbr-installer.sh && bash ovz-bbr-installer.sh
+# 更新 glibc（我更建议你重装系统，换个高版本的系统，如果更新glibc搞不定）
+# CentOS 6 更新 glibc，首先下载如下几个文件：
+wget http://ftp.redsleeve.org/pub/steam/glibc-2.15-60.el6.x86_64.rpm \
+http://ftp.redsleeve.org/pub/steam/glibc-common-2.15-60.el6.x86_64.rpm \
+http://ftp.redsleeve.org/pub/steam/glibc-devel-2.15-60.el6.x86_64.rpm \
+http://ftp.redsleeve.org/pub/steam/glibc-headers-2.15-60.el6.x86_64.rpm \
+http://ftp.redsleeve.org/pub/steam/nscd-2.15-60.el6.x86_64.rpm
+# 然后安装：
+# rpm -Uvh glibc-2.15-60.el6.x86_64.rpm \
+glibc-common-2.15-60.el6.x86_64.rpm \
+glibc-devel-2.15-60.el6.x86_64.rpm \
+glibc-headers-2.15-60.el6.x86_64.rpm \
+nscd-2.15-60.el6.x86_64.rpm
+# 如果以上步骤无法更新，可以手动编译更新（来自网友的方法）
+wget http://ftp.gnu.org/gnu/glibc/glibc-2.15.tar.gz
+wget http://ftp.gnu.org/gnu/glibc/glibc-ports-2.15.tar.gz
+tar -zxf glibc-2.15.tar.gz
+tar -zxf glibc-ports-2.15.tar.gz
+mv glibc-ports-2.15 glibc-2.15/ports
+mkdir glibc-build-2.15
+cd glibc-build-2.15
+../glibc-2.15/configure --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin
+make all && make install
+# 检查一下：
+# ldd --version
+ldd (GNU libc) 2.15
+Copyright (C) 2012 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Written by Roland McGrath and Ulrich Drepper.
+# 已经升级到 glibc 2.15 了。
 # 测试是否开启成功
 ping 10.0.0.2
 # 卸载	
